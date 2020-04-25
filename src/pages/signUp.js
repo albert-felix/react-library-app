@@ -41,6 +41,10 @@ const signUp = () => {
 
       if (data.status === "SUCCESS") {
         alert("User created");
+        setFirstName("");
+        setLastName("");
+        setEmail("");
+        setPassword("");
       } else {
         console.error(data);
         alert("Unable to Signup");
