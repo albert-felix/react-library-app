@@ -1,22 +1,53 @@
 import React from "react";
-import { Nav, Navbar, Button } from "react-bootstrap";
-// import { NavLink } from "react-router-dom";
+import { Nav, Navbar } from "react-bootstrap";
+import { NavLink } from "react-router-dom";
 import routes from "../routes/routes";
 
 const Header = () => {
   return (
-    <div className="container">
+    <div>
       <Navbar bg="dark" variant="dark" expand="lg">
-        <Navbar.Brand href="#home">Library</Navbar.Brand>
+        <Navbar.Brand>Library</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
-            <Nav.Link href={routes.home}>Home</Nav.Link>
-            <Nav.Link href="#features">Cart</Nav.Link>
-            <Nav.Link href="#pricing">Checkout</Nav.Link>
+            <NavLink
+              className={"nav-link"}
+              activeClassName={"active"}
+              to={routes.home}>
+              Home
+            </NavLink>
+            <NavLink
+              className={"nav-link"}
+              activeClassName={"active"}
+              to={routes.cart}>
+              Cart
+            </NavLink>
+            <NavLink
+              className={"nav-link"}
+              activeClassName={"active"}
+              to={routes.checkout}>
+              Checkout
+            </NavLink>
           </Nav>
-          <Button variant="link">SignUp</Button>
-          <Button variant="link">Login</Button>
+          <Nav>
+          <NavLink
+            to={routes.signUp}
+            className={"nav-link"}
+            activeClassName={"active"}
+            size="sm"
+            variant="light">
+            SignUp
+          </NavLink>
+          <NavLink 
+          to={routes.login}
+          className={"nav-link"}
+          activeClassName={"active"}
+          size="sm"
+          variant="light">
+            Login
+          </NavLink>
+          </Nav>
         </Navbar.Collapse>
       </Navbar>
     </div>

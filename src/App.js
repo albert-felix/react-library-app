@@ -3,17 +3,23 @@ import { Switch, Route } from "react-router-dom";
 import Header from "./components/header";
 import routes from "./routes/routes";
 import Home from "./pages/home";
+import SignUp from "./pages/signUp";
 
 import "./styles.css";
+import Checkout from "./pages/checkout";
+import Cart from "./pages/cart";
+import Login from "./pages/login";
 
 export default function App() {
   return (
     <div className="App">
       <Header />
       <Switch>
-        <Route path={routes.home}>
-          <Home />
-        </Route>
+        <Route path={routes.home} component={Home}></Route>
+        <Route path={routes.signUp} component={SignUp}></Route>
+        <Route path={routes.cart} component={Cart}></Route>
+        <Route path={routes.checkout} component={Checkout}></Route>
+        <Route path={routes.login} component={Login}></Route>
       </Switch>
     </div>
   );

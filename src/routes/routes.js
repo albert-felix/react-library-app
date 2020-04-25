@@ -1,9 +1,10 @@
 const routes = {
   home: "/home",
+  signUp: "/signup",
   login: "/login",
-  cart: "/cart/:id",
-  checkout: "/checkout/:id",
-  userProfile: "/profile/:id"
+  cart: "/cart",
+  checkout: "/checkout",
+  userProfile: "/profile/"
 };
 
 export default routes;

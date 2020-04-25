@@ -4,12 +4,12 @@ const Book = ({ title, author, description, copies,ISBN }) => {
 
   return(
     <div >
-      <p align="left"><b>Title : </b> {title}</p>
-      <p align="left"><b>Author : </b>{author}</p>
-      <p align="left"><b>Copies : </b>{copies}</p>
-      <p align="left"><b>Description : </b>{description}</p>
-      <p align="left"><b>ISBN : </b>{ISBN}</p>
-      <p>--------------------</p>
+      <p><b>Title : </b> {title}</p>
+      <p><b>Author : </b>{author}</p>
+      <p><b>Copies : </b>{copies}</p>
+      <p align="justify"><b>Description : </b>{description}</p>
+      <p><b>ISBN : </b>{ISBN}</p>
+      <br/>
     </div>
   )
 };

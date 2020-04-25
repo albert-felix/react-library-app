@@ -1,5 +1,6 @@
 import React, { useState, useEffect, Fragment } from "react";
 import Book from "../components/books";
+import { Container, Row, Col, Button } from "react-bootstrap";
 
 const Home = () => {
   const [books, setBooks] = useState([]);
@@ -13,24 +14,39 @@ const Home = () => {
 
   return (
     <Fragment>
-      <h2>Books List</h2>
-      {books.map((book, bookIndex) => {
-        return (
-          <Fragment key={bookIndex}>
-            <div className="container">
-              <Book
-                title={book.title}
-                author={book.author}
-                copies={book.copies}
-                description={book.description}
-                ISBN={book.ISBN}
-              />
-            </div>
-          </Fragment>
-        );
-      })}
-      </Fragment>
-    )
+      <br/>
+      <h2 align="center">Books List</h2>
+          {books.map((book, bookIndex) => {
+
+            const addToCart = () => {
+
+            };
+
+            return (
+              <Fragment key={bookIndex}>
+                <div>
+                  <Container>
+                  <Row>
+                  <Col>
+                    <Book
+                      title={book.title}
+                      author={book.author}
+                      copies={book.copies}
+                      description={book.description}
+                      ISBN={book.ISBN}
+                    />
+                  </Col>
+                  <Col xs lg="2">
+                    <Button onClick={addToCart} variant="dark" size="sm" >Add To Cart</Button>
+                  </Col>
+                  </Row>
+                  </Container>
+                </div>
+              </Fragment>
+            );
+          })}
+    </Fragment>
+  );
 };
 
 export default Home;
