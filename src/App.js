@@ -1,5 +1,5 @@
-import React from "react";
-import { Switch, Route } from "react-router-dom";
+import React, {useEffect} from "react";
+import { Switch, Route, useLocation, useHistory } from "react-router-dom";
 import Header from "./components/header";
 import routes from "./routes/routes";
 import Home from "./pages/home";
@@ -11,6 +11,16 @@ import Cart from "./pages/cart";
 import Login from "./pages/login";
 
 export default function App() {
+
+  const location = useLocation();
+  const history = useHistory();
+
+  useEffect(() => {
+    if (location.pathname === "/"){
+      history.push(routes.home);
+    }
+  })
+
   return (
     <div className="App">
       <Header />
