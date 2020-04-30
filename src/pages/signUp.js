@@ -1,7 +1,11 @@
 import React, { Fragment, useState } from "react";
 import { Form, Button } from "react-bootstrap";
+import {useHistory} from "react-router-dom";
+import routes from "../routes/routes";
 
 const signUp = () => {
+
+  const history = useHistory();
   
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -41,11 +45,9 @@ const signUp = () => {
 
       if (data.status === "SUCCESS") {
         alert("User created");
-        setFirstName("");
-        setLastName("");
-        setEmail("");
-        setPassword("");
-      } else {
+        history.push(routes.home);
+      } 
+      else {
         console.error(data);
         alert("Unable to Signup");
       }
