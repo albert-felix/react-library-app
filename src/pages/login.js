@@ -3,12 +3,15 @@ import { Form, Button } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import loginRequest from "../services/loginRequest";
 import routes from "../routes/routes";
+import useUserProvider from "../store/UserProvider/useUserProvider";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const history = useHistory();
+
+  const { setUserLoggedIn } = useUserProvider();
 
   const onEmailChange = event => setEmail(event.target.value);
   const onPasswordChange = event => setPassword(event.target.value);
@@ -20,9 +23,10 @@ const Login = () => {
       const url = "https://upo24.sse.codesandbox.io/user/login";
       const loginData = { email, password };
       const response = await loginRequest(url, "POST", loginData);
-      console.log(response)
       if (response.status === "SUCCESS") {
+        setUserLoggedIn();
         window.localStorage.setItem("jwtToken", response.jwtToken);
+        window.localStorage.setItem("email", email);
         alert("Successfully Logged In");
         history.push(routes.home);
       } else {

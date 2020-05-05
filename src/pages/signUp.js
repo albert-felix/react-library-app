@@ -2,6 +2,7 @@ import React, { Fragment, useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import {useHistory} from "react-router-dom";
 import routes from "../routes/routes";
+import useUserProvider from "../store/UserProvider/useUserProvider";
 
 const signUp = () => {
 
@@ -12,11 +13,15 @@ const signUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const { setUserLoggedIn } = useUserProvider();
+
+
   const onfirstNameChange = event => setFirstName(event.target.value);
   const onLastNameChange = event => setLastName(event.target.value);
   const onEmailChange = event => setEmail(event.target.value);
   const onPasswordChange = event => setPassword(event.target.value);
 
+ 
   const singUpForm = async event => {
     event.preventDefault();
 
@@ -45,6 +50,9 @@ const signUp = () => {
 
       if (data.status === "SUCCESS") {
         alert("User created");
+        setUserLoggedIn();
+        window.localStorage.setItem("jwtToken", data.jwtToken);
+        window.localStorage.setItem("email", email);
         history.push(routes.home);
       } 
       else {

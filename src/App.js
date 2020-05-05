@@ -15,6 +15,7 @@ export default function App() {
   const location = useLocation();
   const history = useHistory();
 
+
   useEffect(() => {
     if (location.pathname === "/"){
       history.push(routes.home);

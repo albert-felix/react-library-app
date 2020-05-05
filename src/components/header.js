@@ -1,9 +1,19 @@
 import React from "react";
-import { Nav, Navbar } from "react-bootstrap";
+import { Nav, Navbar, Button } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import routes from "../routes/routes";
+import useUserProvider from "../store/UserProvider/useUserProvider";
 
 const Header = () => {
+  const { isUserLoggedIn } = useUserProvider();
+
+
+  const logout = () => {
+    window.localStorage.removeItem("jwtToken");
+    window.localStorage.removeItem("email");
+    window.location.reload();
+  };
+
   return (
     <div>
       <Navbar bg="dark" variant="dark" expand="lg">
@@ -14,39 +24,71 @@ const Header = () => {
             <NavLink
               className={"nav-link"}
               activeClassName={"active"}
-              to={routes.home}>
+              to={routes.home}
+            >
               Home
             </NavLink>
-            <NavLink
-              className={"nav-link"}
-              activeClassName={"active"}
-              to={routes.cart}>
-              Cart
-            </NavLink>
-            <NavLink
-              className={"nav-link"}
-              activeClassName={"active"}
-              to={routes.checkout}>
-              Checkout
-            </NavLink>
+            {isUserLoggedIn ? (
+              <NavLink
+                className={"nav-link"}
+                activeClassName={"active"}
+                to={routes.cart}
+              >
+                Cart
+              </NavLink>
+            ) : null}
+            {isUserLoggedIn ? (
+              <NavLink
+                className={"nav-link"}
+                activeClassName={"active"}
+                to={routes.checkout}
+              >
+                Checkout
+              </NavLink>
+            ) : null}
           </Nav>
           <Nav>
-          <NavLink
-            to={routes.signUp}
-            className={"nav-link"}
-            activeClassName={"active"}
-            size="sm"
-            variant="light">
-            SignUp
-          </NavLink>
-          <NavLink 
-          to={routes.login}
-          className={"nav-link"}
-          activeClassName={"active"}
-          size="sm"
-          variant="light">
-            Login
-          </NavLink>
+            {isUserLoggedIn ? (
+              <NavLink
+                to={routes.userProfile}
+                className={"nav-link"}
+                activeClassName={"active"}
+                size="sm"
+                variant="light"
+              >
+                Profile
+              </NavLink>
+            ) : (
+              <NavLink
+                to={routes.signUp}
+                className={"nav-link"}
+                activeClassName={"active"}
+                size="sm"
+                variant="light"
+              >
+                SignUp
+              </NavLink>
+            )}
+            {isUserLoggedIn ? (
+              <Button
+                onClick={logout}
+                variant="dark"
+                activeClassName={"active"}
+
+              >
+                Logout
+              </Button>
+            ) : (
+              <NavLink
+                to={routes.login}
+                className={"nav-link"}
+                activeClassName={"active"}
+                size="sm"
+                variant="light"
+              >
+                Login
+              </NavLink>
+            )}
           </Nav>
         </Navbar.Collapse>
       </Navbar>
