@@ -23,18 +23,51 @@ const Cart = () => {
       .catch(console.error);
   }, []);
 
-
   return (
     <Fragment>
       <div className="container">
         <h2>Books in Cart</h2>
         <br />
         {books.map((book, bookIndex) => {
+          const removeBook = async () => {
+            try {
+              const currentUser = window.localStorage.getItem("email");
+              const bookName = book;
+              const data = { bookName, currentUser };
+
+              const config = {
+                method: "POST",
+                mode: "cors",
+                headers: {
+                  "Content-Type": "application/JSON"
+                },
+                body: JSON.stringify(data)
+              };
+
+              const response = await fetch(
+                "https://upo24.sse.codesandbox.io/user/removeFromCart",
+                config
+              );
+              const result = await response.json();
+              if (result.status === "SUCCESS") {
+                alert("Successfully removed");
+              } else if(result.status === "NOT_IN_CART") {
+                alert("Already removed from cart")
+              }
+              else {
+                alert("Somethig Went Wrong");
+              }
+            } catch (e) {
+              console.error(e);
+              alert("Something Went Wrong");
+            }
+          };
+
           return (
             <Fragment key={bookIndex}>
               <p>
                 {bookIndex + 1}. {book}{" "}
-                <Button onClick = {null} variant="link" size="sm">
+                <Button onClick={removeBook} variant="link" size="sm">
                   Remove
                 </Button>
               </p>
