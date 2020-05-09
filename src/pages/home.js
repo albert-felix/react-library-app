@@ -37,6 +37,7 @@ const Home = () => {
                 body: JSON.stringify(data)
               };
 
+
               const response = await fetch(
                 "https://upo24.sse.codesandbox.io/user/addToCart",
                 config
@@ -53,6 +54,8 @@ const Home = () => {
                 console.error();
                 alert("Something Went Wrong");
               }
+
+
             } else {
               alert("Login to Add Books to Cart");
             }

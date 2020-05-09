@@ -9,6 +9,7 @@ import "./styles.css";
 import Checkout from "./pages/checkout";
 import Cart from "./pages/cart";
 import Login from "./pages/login";
+import Profile from "./pages/userProfile";
 
 export default function App() {
 
@@ -31,6 +32,7 @@ export default function App() {
         <Route path={routes.cart} component={Cart}></Route>
         <Route path={routes.checkout} component={Checkout}></Route>
         <Route path={routes.login} component={Login}></Route>
+        <Route path={routes.userProfile} component={Profile}></Route>
       </Switch>
     </div>
   );
