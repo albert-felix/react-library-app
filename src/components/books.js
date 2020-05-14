@@ -3,7 +3,7 @@ import React from "react";
 const Book = ({ title, author, description, copies,ISBN }) => {
 
   return(
-    <div >
+    <div className="margin">
       <p><b>Title : </b> {title}</p>
       <p><b>Author : </b>{author}</p>
       <p><b>Copies : </b>{copies}</p>

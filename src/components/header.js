@@ -7,7 +7,6 @@ import useUserProvider from "../store/UserProvider/useUserProvider";
 const Header = () => {
   const { isUserLoggedIn } = useUserProvider();
 
-
   const logout = () => {
     window.localStorage.removeItem("jwtToken");
     window.localStorage.removeItem("email");
@@ -74,7 +73,6 @@ const Header = () => {
                 onClick={logout}
                 variant="dark"
                 activeClassName={"active"}
-
               >
                 Logout
               </Button>
