@@ -51,10 +51,9 @@ const Cart = () => {
               const result = await response.json();
               if (result.status === "SUCCESS") {
                 alert("Successfully removed");
-              } else if(result.status === "NOT_IN_CART") {
-                alert("Already removed from cart")
-              }
-              else {
+              } else if (result.status === "NOT_IN_CART") {
+                alert("Already removed from cart");
+              } else {
                 alert("Somethig Went Wrong");
               }
             } catch (e) {
@@ -66,7 +65,7 @@ const Cart = () => {
           return (
             <Fragment key={bookIndex}>
               <p>
-                {bookIndex + 1}. {book}{" "}
+                {bookIndex + 1}. {book}
                 <Button onClick={removeBook} variant="link" size="sm">
                   Remove
                 </Button>

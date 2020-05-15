@@ -59,7 +59,7 @@ const userProfile = () => {
               };
 
               const response = await fetch(
-                "https://upo24.sse.codesandbox.io/user/removeFromCart",
+                "https://upo24.sse.codesandbox.io/user/returnBooks",
                 config
               );
               const result = await response.json();
