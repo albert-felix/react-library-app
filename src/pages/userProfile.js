@@ -1,7 +1,7 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { Button } from "react-bootstrap";
 
-const userProfile = () => {
+const UserProfile = () => {
   const currentUser = window.localStorage.getItem("email");
   const data = { currentUser };
 
@@ -95,4 +95,4 @@ const userProfile = () => {
   );
 };
 
-export default userProfile;
+export default UserProfile;
