@@ -4,7 +4,7 @@ import {useHistory} from "react-router-dom";
 import routes from "../routes/routes";
 import useUserProvider from "../store/UserProvider/useUserProvider";
 
-const signUp = () => {
+const SignUp = () => {
 
   const history = useHistory();
   
@@ -119,4 +119,4 @@ const signUp = () => {
   );
 };
 
-export default signUp;
+export default SignUp;
