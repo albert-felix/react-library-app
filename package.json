@@ -1,6 +1,7 @@
 {
   "name": "react-library-app",
   "version": "1.0.0",
+  "homepage":"https://albert-felix.github.io/react-library-app/",
   "description": "",
   "keywords": [],
   "main": "src/index.js",
@@ -18,6 +19,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "eject": "react-scripts eject"
   },
   "proxy": "http://localhost:3000",
