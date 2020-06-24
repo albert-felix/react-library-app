@@ -7,7 +7,7 @@ const Home = () => {
   const [books, setBooks] = useState([]);
 
   useEffect(() => {
-    fetch("https://upo24.sse.codesandbox.io/books")
+    fetch("https://upo24.sse.codesandbox.io/books", {method:"POST"})
       .then(response => response.json())
       .then(data => {
         setBooks(data.books);
